@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backyard Gold Rush — Store Page Draft</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;background:#1b2838;color:#acb2b8;font:13px/1.45 Arial,Helvetica,"Motiva Sans",sans-serif}
+a{color:#66c0f4;text-decoration:none}
+.draftbar{position:sticky;top:0;z-index:5;background:#171a21;color:#c7d5e0;font-size:12px;padding:7px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #000}
+.draftbar b{background:#e8b53a;color:#171a21;padding:1px 6px;border-radius:2px;margin-right:8px;font-size:11px;letter-spacing:.08em}
+.draftbar label{cursor:pointer;white-space:nowrap}
+.pagebg{background:linear-gradient(to bottom,rgba(27,40,56,.15) 0,rgba(27,40,56,.35) 420px,#1b2838 780px) center top/100% 820px no-repeat,url(img/page_background_1438x810.jpg) center top/1438px auto no-repeat,#1b2838}
+.page{max-width:940px;margin:0 auto;padding:22px 0 60px}
+.crumbs{font-size:12px;color:#8f98a0;margin:0 0 2px}
+.crumbs a{color:#8f98a0}
+.titlebar{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:10px}
+.apphub{font-size:26px;color:#fff;font-weight:400;font-family:"Motiva Sans",Arial,sans-serif;letter-spacing:.2px}
+.hubbtn{background:rgba(103,193,245,.2);color:#67c1f5;padding:6px 12px;border-radius:2px;font-size:13px}
+.glance{display:grid;grid-template-columns:600px 324px;gap:16px;background:linear-gradient(to right,rgba(0,0,0,.3),rgba(0,0,0,.15));padding:0}
+.media .big{width:600px;height:337px;object-fit:cover;display:block;background:#000}
+.strip{display:flex;gap:4px;overflow-x:auto;padding:6px 0 4px;scrollbar-color:#3d6c8d #1a2838}
+.strip img{width:116px;height:65px;object-fit:cover;flex:none;cursor:pointer;border:2px solid transparent;opacity:.9}
+.strip img.on{border-color:#fff;opacity:1}
+.right .cap{width:324px;height:151px;object-fit:cover;display:block}
+.right .sd{color:#c6d4df;font-size:13px;line-height:18px;margin:12px 0 14px;padding-right:4px}
+.rows{display:grid;grid-template-columns:110px 1fr;row-gap:6px;font-size:11px;text-transform:uppercase;color:#556772}
+.rows .v{text-transform:none;font-size:12px;color:#8f98a0}
+.rows .v a{color:#66c0f4}
+.tagslabel{color:#556772;font-size:12px;margin:14px 0 4px}
+.tags{display:flex;flex-wrap:wrap;gap:3px}
+.tag{background:rgba(103,193,245,.2);color:#67c1f5;padding:0 7px;line-height:19px;border-radius:2px;font-size:11px}
+.tag.more{padding:0 6px}
+.queue{display:flex;gap:6px;margin:16px 0 14px;background:rgba(0,0,0,.2);padding:12px 14px;border-radius:2px}
+.qbtn{background:rgba(103,193,245,.2);color:#67c1f5;padding:0 15px;line-height:30px;border-radius:2px;font-size:14px}
+.main{display:grid;grid-template-columns:616px 308px;gap:16px}
+.purchase{position:relative;background:linear-gradient(-60deg,rgba(226,244,255,.3) 5%,rgba(84,107,115,.3) 95%);padding:16px 16px 26px;margin:0 0 28px;border-radius:4px}
+.purchase h1{margin:0 0 6px;font-size:21px;font-weight:400;color:#fff;font-family:"Motiva Sans",Arial,sans-serif}
+.purchase .plat{color:#fff;opacity:.6;font-size:11px}
+.buyrow{position:absolute;right:16px;bottom:-17px;display:flex;background:#000;padding:2px;border-radius:2px}
+.buyrow .price{color:#c6d4df;font-size:13px;padding:8px 12px;background:#000}
+.buyrow .cart{background:linear-gradient(to right,#75b022 5%,#588a1b 95%);color:#d2efa9;padding:0 15px;line-height:32px;font-size:15px;border-radius:2px}
+.sect{margin-bottom:26px}
+.sect h2{font-size:14px;letter-spacing:2px;text-transform:uppercase;color:#fff;font-weight:400;margin:0 0 10px;padding-bottom:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='1'%3E%3Crect width='10' height='1' fill='%233b5a72'/%3E%3C/svg%3E") left bottom repeat-x;display:flex;justify-content:space-between;align-items:center}
+.desc{color:#acb2b8;font-size:14px;line-height:1.55}
+.desc h3{font-size:14px;text-transform:uppercase;color:#fff;font-weight:400;letter-spacing:1px;margin:22px 0 8px}
+.desc ul{padding-left:18px;margin:6px 0 14px}
+.desc li{margin:4px 0}
+.desc b{color:#d6d7d8}
+.desc img{width:100%;display:block;margin:4px 0 12px}
+.mature{background:rgba(0,0,0,.2);padding:12px 14px;color:#8f98a0;font-size:12px;border-left:3px solid #4c6b22}
+.sys{display:grid;grid-template-columns:1fr 1fr;gap:24px;font-size:12px}
+.sys strong{color:#c6d4df;font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:1px;display:block;margin-bottom:6px}
+.sys ul{list-style:none;padding:0;margin:0}
+.sys li{margin:3px 0;color:#acb2b8}
+.sys li span{color:#8f98a0}
+.block{background:rgba(0,0,0,.2);margin-bottom:12px;padding:12px 14px;border-radius:2px}
+.block h4{margin:0 0 10px;color:#fff;font-weight:400;font-size:13px}
+.feat{display:flex;align-items:center;gap:10px;background:rgba(103,193,245,.08);margin-bottom:2px;padding:5px 8px;color:#67c1f5;font-size:12px}
+.feat i{width:18px;height:18px;border-radius:2px;background:#2a475e;display:inline-flex;align-items:center;justify-content:center;font-style:normal;color:#c6d4df;font-size:11px}
+.langs{width:100%;border-collapse:collapse;font-size:11px}
+.langs th{color:#8f98a0;font-weight:400;text-align:center;padding:2px}
+.langs td{padding:3px;text-align:center;color:#67c1f5}
+.langs td:first-child{text-align:left;color:#acb2b8}
+.reviews{color:#8f98a0;font-size:12px}
+.copy{display:none;font:11px Arial;background:#3d6c8d;color:#fff;border:0;border-radius:2px;padding:3px 8px;cursor:pointer;letter-spacing:0;text-transform:none;margin-left:6px}
+.copy.ok{background:#5c7e10}
+body.showcopy .copy{display:inline-block}
+.tools{display:none;background:#10161d;border:1px solid #2a475e;border-radius:3px;padding:12px;margin:0 0 20px;color:#c6d4df}
+body.showcopy .tools{display:block}
+.tools pre{white-space:pre-wrap;background:#0b0f14;padding:8px;border-radius:2px;font:12px/1.45 Consolas,monospace;color:#c6d4df;max-height:240px;overflow:auto;margin:6px 0 10px}
+.tools h5{margin:8px 0 2px;font-size:12px;color:#66c0f4;font-weight:400;display:flex;justify-content:space-between}
+@media(max-width:960px){
+ .page{padding:14px 12px 60px}
+ .glance,.main{grid-template-columns:1fr;gap:12px}
+ .glance{background:none}
+ .media .big{width:100%;height:auto;aspect-ratio:16/9}
+ .right .cap{width:100%;height:auto;aspect-ratio:920/430}
+ .main>div,.glance>div{min-width:0}
+}
+@media(max-width:640px){
+ html,body{font-size:14px}
+ .draftbar{position:static;flex-wrap:nowrap;font-size:12px;padding:8px 12px}
+ .draftbar .long{display:none}
+ .page{padding:10px 0 50px}
+ .crumbs,.titlebar,.right,.queue,.main{padding-left:12px;padding-right:12px}
+ .titlebar{align-items:center;gap:10px}
+ .apphub{font-size:22px;line-height:1.2}
+ .hubbtn{font-size:12px;padding:5px 9px;white-space:nowrap}
+ .strip{padding:6px 12px 4px}
+ .strip img{width:96px;height:54px}
+ .right .cap{border-radius:2px}
+ .right .sd{font-size:14px;line-height:20px}
+ .rows{grid-template-columns:105px 1fr}
+ .tag{font-size:12px;line-height:24px;padding:0 9px}
+ .queue{flex-wrap:wrap;margin:12px;padding:10px;background:rgba(0,0,0,.25)}
+ .qbtn{flex:1 1 auto;text-align:center;font-size:13px}
+ .purchase{padding:14px 14px 30px;margin-bottom:30px}
+ .purchase h1{font-size:18px}
+ .buyrow{right:12px}
+ .buyrow .cart{font-size:14px}
+ .desc{font-size:15px}
+ .sys{grid-template-columns:1fr;gap:16px}
+ .tools{margin:0 12px 16px}
+ .copy{padding:6px 10px;font-size:12px}
+ .langs{font-size:12px}
+ .feat{padding:8px}
+}
+</style>
+</head>
+<body>
+<div class="draftbar"><span><b>DRAFT</b>Store page preview<span class="long"> for Backyard Gold Rush. This is not a live store listing.</span></span><label><input type="checkbox" id="cb"> Show copy buttons</label></div>
+<div class="pagebg">
+<div class="page">
+
+  <div class="tools" id="tools">
+    <h5>Short description (<span id="sdcount"></span>/300) <button class="copy" data-copy="short-text">Copy</button></h5>
+    <h5>About this game: BBCode for Steamworks <button class="copy" data-copy="about-bb">Copy</button></h5>
+    <pre id="about-bb"></pre>
+    <h5>Tags (20) <button class="copy" data-copy="tags-text">Copy</button></h5>
+    <pre id="tags-text"></pre>
+    <h5>Socials <button class="copy" data-copy="social">Copy</button></h5>
+    <pre id="social">Grandpa left you his backyard. The county left you a tax bill. Grab 3 friends and a shovel.
+Dig. Pan. Get rich. Get buried. A $2 co-op gold rush.
+It's Lethal Company, but the monster is property tax.</pre>
+  </div>
+
+  <div class="crumbs"><a>All Games</a> &gt; <a>Indie Games</a> &gt; <a>Backyard Gold Rush</a></div>
+  <div class="titlebar"><div class="apphub">Backyard Gold Rush</div><span class="hubbtn">Community Hub</span></div>
+
+  <div class="glance">
+    <div class="media">
+      <img class="big" id="big" src="img/screenshot_01_well_a.jpg" alt="">
+      <div class="strip" id="strip"></div>
+    </div>
+    <div class="right">
+      <img class="cap" src="img/header_capsule_920x430.jpg" alt="">
+      <div class="sd" id="short-text">Grandpa left you his backyard, and a tax bill. Dig for gold with up to 3 friends, pan it at the creek, sell it at the pawn shop and tunnel deeper before the county takes the house. Cave-ins, police raids and a very suspicious casino included.</div>
+      <div class="rows">
+        <span>All reviews:</span><span class="v">No user reviews</span>
+        <span>Release date:</span><span class="v">Coming soon</span>
+        <span>Developer:</span><span class="v"><a>Ilija Kekovic</a></span>
+        <span>Publisher:</span><span class="v"><a>Ilija Kekovic</a></span>
+      </div>
+      <div class="tagslabel">Popular user-defined tags for this product:</div>
+      <div class="tags" id="tagrow"></div>
+    </div>
+  </div>
+
+  <div class="queue"><span class="qbtn">Add to your wishlist</span><span class="qbtn">Follow</span><span class="qbtn">Ignore</span></div>
+
+  <div class="main">
+    <div>
+      <div class="purchase">
+        <h1>Buy Backyard Gold Rush</h1>
+        <div class="plat">Windows</div>
+        <div class="buyrow"><span class="price">$1.99</span><span class="cart">Add to Cart</span></div>
+      </div>
+
+      <div class="sect">
+        <h2>About This Game <span><button class="copy" data-copy="about-bb">Copy BBCode</button></span></h2>
+        <div class="desc" id="about-html">
+          <img src="img/main_capsule_1232x706.jpg" alt="">
+          <p><b>Grandpa left you his backyard. The county left you a tax bill.</b> You have 30 days to dig up enough gold to keep the house, and you're doing it with your friends, a rusty shovel and zero safety training.</p>
+          <p>Backyard Gold Rush is a 1–4 player co-op digging game. Tear up the yard one block at a time, haul buckets of dirt to the creek, pan for gold, then haggle it away at the pawn shop for better tools. Every run is a new yard. Every day the taxes go up. Every tunnel might fall on your head.</p>
+          <h3>Dig. Pan. Get rich. (Maybe.)</h3>
+          <ul>
+            <li><b>A fully diggable yard:</b> topsoil, clay, gravel, grandpa's secret mine, then the deep mine full of quartz, jadarite and diamonds.</li>
+            <li><b>Panning minigame:</b> carry your bucket to the creek and wash it for nuggets, junk and weird artifacts.</li>
+            <li><b>The pawn shop:</b> sell your finds, catch flash sales and upgrade shovels, buckets and pans.</li>
+            <li><b>30-day runs:</b> pay the tax every deadline or the county repossesses. Random yard, shareable seeds and a daily yard with a leaderboard.</li>
+          </ul>
+          <h3>Failing together is half the fun</h3>
+          <ul>
+            <li><b>Cave-ins:</b> dig a room too big and the ceiling comes down. Prop it with timber or dig your friend out before the air runs out.</li>
+            <li><b>Proximity voice chat:</b> hear your friends scream as the tunnel collapses.</li>
+            <li><b>Ghosts and revives:</b> die and haunt your team until someone brings you back. Life insurance is available. Probably a good idea.</li>
+            <li><b>Funny end-of-run awards:</b> obituaries, a police report and awards for your worst decisions.</li>
+          </ul>
+          <h3>Grandpa's town has… options</h3>
+          <ul>
+            <li><b>The Arsenal:</b> guns, ammo and explosives. No questions asked.</li>
+            <li><b>Skip the taxes</b> and the police raid your yard, with SWAT, K-9s and flashbangs.</li>
+            <li><b>The casino:</b> a wheel of fortune, roulette and slots. Bet the tax money. What could go wrong?</li>
+            <li><b>Plus:</b> rails and an ore cart, flooding and water pumps, thunderstorms, Old Hollis the nosy neighbor, a cursed idol, a gym, chess by the campfire and cosmetics you earn from awards.</li>
+          </ul>
+          <p><b>Built for Friday nights:</b> short sessions, cheap price, maximum chaos. Host a public lobby, or invite friends privately with a 5-digit code.</p>
+        </div>
+      </div>
+
+      <div class="sect">
+        <h2>Mature Content Description <button class="copy" data-copy="mature">Copy</button></h2>
+        <div class="mature"><div style="color:#c6d4df;margin-bottom:6px">The developers describe the content like this:</div><span id="mature">This game contains cartoon violence against people, including firearms, explosives and police raids, with blood and bodies shown in a low-poly art style. It includes simulated gambling (a wheel of fortune, roulette and slot machines) that uses only in-game money: no real money can be spent or won.</span></div>
+      </div>
+
+      <div class="sect">
+        <h2>System Requirements <button class="copy" data-copy="sysreq">Copy</button></h2>
+        <div class="sys" id="sysreq">
+          <div><strong>Minimum:</strong><ul>
+            <li><span>Requires a 64-bit processor and operating system</span></li>
+            <li><span>OS:</span> Windows 10 64-bit</li>
+            <li><span>Processor:</span> Dual-core 2.5 GHz</li>
+            <li><span>Memory:</span> 4 GB RAM</li>
+            <li><span>Graphics:</span> OpenGL 3.3 compatible (Intel HD 520 / GTX 650)</li>
+            <li><span>Network:</span> Broadband Internet connection</li>
+            <li><span>Storage:</span> 500 MB available space</li>
+            <li><span>Additional Notes:</span> Microphone optional for proximity voice chat</li></ul></div>
+          <div><strong>Recommended:</strong><ul>
+            <li><span>Requires a 64-bit processor and operating system</span></li>
+            <li><span>OS:</span> Windows 10/11 64-bit</li>
+            <li><span>Processor:</span> Quad-core 3.0 GHz</li>
+            <li><span>Memory:</span> 8 GB RAM</li>
+            <li><span>Graphics:</span> GTX 1050 / RX 560 or better</li>
+            <li><span>Network:</span> Broadband Internet connection</li>
+            <li><span>Storage:</span> 500 MB available space</li>
+            <li><span>Additional Notes:</span> Microphone for voice chat</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="block">
+        <div class="feat"><i>👤</i>Single-player</div>
+        <div class="feat"><i>👥</i>Online Co-op</div>
+        <div class="feat"><i>🖧</i>LAN Co-op</div>
+        <div class="feat"><i>🏆</i>Steam Leaderboards</div>
+        <div class="feat"><i>🎙</i>In-game voice chat</div>
+      </div>
+      <div class="block">
+        <h4>Languages:</h4>
+        <table class="langs"><tr><th></th><th>Interface</th><th>Full Audio</th><th>Subtitles</th></tr>
+          <tr><td>English</td><td>✔</td><td></td><td>✔</td></tr></table>
+      </div>
+      <div class="block reviews">
+        <h4>Is this game relevant to you?</h4>
+        Sign in to see reasons why you may or may not like this based on your games, friends, and curators you follow.
+      </div>
+      <div class="block reviews">
+        <div class="rows" style="grid-template-columns:90px 1fr">
+          <span>Title:</span><span class="v">Backyard Gold Rush</span>
+          <span>Genre:</span><span class="v"><a>Indie</a>, <a>Simulation</a>, <a>Casual</a></span>
+          <span>Developer:</span><span class="v"><a>Ilija Kekovic</a></span>
+          <span>Publisher:</span><span class="v"><a>Ilija Kekovic</a></span>
+          <span>Release:</span><span class="v">Coming soon</span>
+        </div>
+      </div>
+      <div class="block reviews">
+        <h4>Library art preview</h4>
+        <img src="img/library_capsule_600x900.jpg" style="width:100%;display:block;margin-bottom:8px" alt="">
+        <div style="position:relative"><img src="img/library_hero_3840x1240.jpg" style="width:100%;display:block" alt=""><img src="img/library_logo_1280x720.png" style="position:absolute;left:4%;top:8%;width:52%" alt=""></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+const shots=["01_well_a","02_storm_yard","03_wheel","04_bake_creek","05_casino_in","06_pawn_in","07_bake_armory","08_bake_farm","09_scope","10_gym_side"].map(s=>`img/screenshot_${s}.jpg`);
+const st=document.getElementById('strip'),big=document.getElementById('big');
+shots.forEach((s,i)=>{const im=new Image();im.src=s;im.alt='';if(!i)im.className='on';im.onclick=()=>{big.src=s;st.querySelectorAll('img').forEach(x=>x.classList.remove('on'));im.classList.add('on')};st.appendChild(im)});
+let cur=0;setInterval(()=>{if(document.hidden)return;cur=(cur+1)%shots.length;st.children[cur].click()},5000);
+
+const tags=["Online Co-Op","Co-op","Multiplayer","Funny","Mining","Voxel","Stylized","Indie","Simulation","Casual","First-Person","Destruction","Physics","Comedy","Survival","Building","Gambling","Exploration","Party Game","Sandbox"];
+document.getElementById('tags-text').textContent=tags.join(', ');
+const tr=document.getElementById('tagrow');tags.slice(0,7).forEach(t=>{const s=document.createElement('a');s.className='tag';s.textContent=t;tr.appendChild(s)});
+const m=document.createElement('a');m.className='tag more';m.textContent='+';tr.appendChild(m);
+document.getElementById('sdcount').textContent=document.getElementById('short-text').textContent.trim().length;
+
+function toBB(node){let out='';node.childNodes.forEach(n=>{
+  if(n.nodeType===3){out+=n.textContent.replace(/\s+/g,' ');return}
+  const t=n.tagName,inner=toBB(n);
+  if(t==='IMG')return;
+  if(t==='H3')out+=`[h2]${inner.trim()}[/h2]\n`;
+  else if(t==='P')out+=inner.trim()+'\n\n';
+  else if(t==='UL')out+='[list]\n'+inner.trim()+'\n[/list]\n\n';
+  else if(t==='LI')out+=`[*]${inner.trim()}\n`;
+  else if(t==='B')out+=`[b]${inner}[/b]`;
+  else out+=inner;});return out}
+document.getElementById('about-bb').textContent=toBB(document.getElementById('about-html')).replace(/^ +| +$/gm,'').replace(/\n{3,}/g,'\n\n').trim();
+
+const cb=document.getElementById('cb');
+cb.addEventListener('change',()=>document.body.classList.toggle('showcopy',cb.checked));
+document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+  const el=document.getElementById(b.dataset.copy);
+  let txt=el.id==='sysreq'?[...el.querySelectorAll('div')].map(d=>d.innerText).join('\n\n'):el.textContent.trim();
+  const old=b.textContent;
+  try{await navigator.clipboard.writeText(txt);b.textContent='Copied ✓';b.classList.add('ok')}
+  catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press Ctrl+C'}
+  setTimeout(()=>{b.textContent=old;b.classList.remove('ok')},1800)}));
+</script>
+</body>
+</html>
